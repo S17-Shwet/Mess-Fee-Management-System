@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jijau Hostel Mess Fee Record</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Jijau Hostel Mess Fee Record</h1>
+
+        <!-- Registration Section -->
+        <div id="registration-section">
+            <h2>New Registration</h2>
+            <input type="text" id="name" placeholder="Name">
+            <input type="text" id="rollNoOrPhone" placeholder="Roll No (Student) or Phone No (Manager)">
+            <input type="password" id="password" placeholder="Password">
+            <select id="role">
+                <option value="student">Student</option>
+                <option value="manager">Mess Manager</option>
+            </select>
+            <button onclick="register()">Register</button>
+            <button onclick="showLoginForm()">Go to Login</button>
+        </div>
+
+        <!-- Login Section -->
+        <div id="login-section" style="display:none;">
+            <h2>Login</h2>
+            <input type="text" id="loginRollNoOrPhone" placeholder="Roll No (Student) or Phone No (Manager)">
+            <input type="password" id="loginPassword" placeholder="Password">
+            <select id="loginRole">
+                <option value="student">Student</option>
+                <option value="manager">Mess Manager</option>
+            </select>
+            <button onclick="login()">Login</button>
+            <p id="loginMessage" style="color: red;"></p>
+            <button onclick="showRegistrationForm()">New Registration</button>
+        </div>
+
+        <!-- Student Fee Record Section -->
+        <div id="fee-record-section" style="display:none;">
+            <h2>Record Fees</h2>
+            <form id="fee-form">
+                <input type="text" id="prn" placeholder="PRN Number">
+                <input type="email" id="email" placeholder="Email ID">
+                <input type="tel" id="phone" placeholder="Phone Number">
+                <label for="startDate">Start Date:</label>
+                <input type="date" id="startDate">
+                <label for="endDate">End Date:</label>
+                <input type="date" id="endDate">
+                <input type="number" id="amount" placeholder="Amount">
+                <input type="text" id="gpayId" placeholder="Google Pay Transaction ID">
+                <label for="gpayScreenshot">Google Pay Screenshot (Image/PDF):</label>
+                <input type="file" id="gpayScreenshot" accept="image/*,.pdf">
+                <button type="button" onclick="saveFeeRecord()">Save Record</button>
+                <button type="button" onclick="viewPreviousRecords()">View Previous Records</button>
+                <button type="button" onclick="enterAnotherRecord()">Enter Another Record</button>
+                <button type="button" onclick="logout()">Logout</button>
+            </form>
+            <p id="successMessage" style="display:none; color: green;">Payment information saved successfully!</p>
+        </div>
+
+        <!-- Student Records View Section -->
+        <div id="student-records-section" style="display:none;">
+            <h2>Your Fee Records</h2>
+            <div id="studentRecords"></div>
+            <button onclick="goBackToFeeEntry()">Go Back</button>
+        </div>
+
+        <!-- Manager View Section -->
+        <div id="manager-view-section" style="display:none;">
+            <h2>All Payment Entries</h2>
+            <input type="text" id="searchQuery" placeholder="Enter Student Name or PRN">
+            <button onclick="searchPayments()">Search</button>
+            <div id="allPaymentRecords"></div>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Firebase Config -->
+    <script type="module" src="firebase.js"></script>
+    <!-- Main Script -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
